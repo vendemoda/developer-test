@@ -1,14 +1,25 @@
-import express from "express";
-import http from "http";
-import bodyParser from "body-parser";
-import config from './config';
+import express from 'express';
+import routes from './routes';
+import cors from 'cors';
 
-import routes from "./routes";
+import './database';
 
-const app = express();
+class App {
+    constructor() {
+        this.server = express();
 
-app.use(bodyParser.json({ limit: config.bodyLimit }));
-app.use("/v1", routes);
+        this.middlewares();
+        this.routes();
+    }
 
-app.server = http.createServer(app);
-module.exports = { app };
+    middlewares() {
+		this.server.use(cors());
+        this.server.use(express.json());
+    }
+
+    routes() {
+        this.server.use(routes);
+    }
+}
+
+export default new App().server;
