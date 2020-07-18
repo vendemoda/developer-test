@@ -1,0 +1,21 @@
+{
+  "name": "vende-moda-developer-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Alcides Bezerra",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon -w src --ignore __tests__ --exec \"babel-node src\""
+  },
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}

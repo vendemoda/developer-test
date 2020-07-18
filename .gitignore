@@ -1,0 +1,8 @@
+node_modules
+build
+dist
+logs
+public
+__tests__
+npm-debug.log
+.DS_Store
