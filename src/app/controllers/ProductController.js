@@ -1,5 +1,7 @@
 import Product from '../models/Product';
+import File from '../models/File';
 import *  as Yup from 'yup';
+import { response } from 'express';
 
 class ProductController {
 
@@ -11,6 +13,7 @@ class ProductController {
             //Pagination: Listing 5 products
             const products = await Product.findAll({
                 where: { deleted_at: null },
+                include: [File],
                 limit: 5,
                 offset: (page - 1) * 5
             });
@@ -30,9 +33,10 @@ class ProductController {
             const product = await Product.findOne({
                 where: {
                     id: req.params.productId
-                }
+                },
+                include: [File]
             });
-
+            
             //If the id does not exist in the database...
             if(!product){
                 return res.status(400).json({ error: 'Esse produto não existe.' });

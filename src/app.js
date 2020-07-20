@@ -7,13 +7,13 @@ import './database';
 class App {
     constructor() {
         this.server = express();
-
         this.middlewares();
         this.routes();
     }
 
     middlewares() {
-		this.server.use(cors());
+        this.server.use(cors());
+        this.server.use('/images', express.static('../images'));
         this.server.use(express.json());
     }
 

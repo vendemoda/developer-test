@@ -25,12 +25,10 @@ router.get('/products', ProductController.index); //List
 router.get('/products/:productId', ProductController.show); //Detail
 
 
-
 /* From here you need authentication to access the route */
 router.use(authMiddleware);
 
 /* Route to files upload */
-//router.post('/products/upload', upload.single('image'), FileController.store);
 router.post('/products/upload', upload.single('file'), FileController.store);
 
 /* Refering to Users */
