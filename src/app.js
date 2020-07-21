@@ -1,6 +1,7 @@
 import express from 'express';
 import routes from './routes';
 import cors from 'cors';
+import { join } from 'path';
 
 import './database';
 
@@ -10,13 +11,13 @@ class App {
         this.middlewares();
         this.routes();
     }
-
+    
     middlewares() {
         this.server.use(cors());
-        this.server.use('/images', express.static('../images'));
+        this.server.use('/images', express.static(join(__dirname, './../images')));
         this.server.use(express.json());
     }
-
+    
     routes() {
         this.server.use(routes);
     }
