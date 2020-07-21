@@ -1,13 +1,4 @@
-import { app } from "./app";
-import dotenv from "dotenv";
+import app from './app';
 
-dotenv.config({
-  path:
-    process.env.NODE_ENV === "production"
-      ? process.env.PWD + "/.env"
-      : process.env.PWD + "/.dev.env",
-});
-
-app.server.listen(process.env.PORT || 1337, () => {
-  console.log("Server listening on " + app.server.address().port);
-});
+//Define a port
+app.listen(1337);
